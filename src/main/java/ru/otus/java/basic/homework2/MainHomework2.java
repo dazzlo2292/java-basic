@@ -91,6 +91,32 @@ public class MainHomework2 {
 
     public static void findEqualsPoint(int[] array) {
         boolean isFind = false;
+        int sumAllElements = 0;
+        int sumLeftElements = 0;
+        int sumRightElements = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            sumAllElements += array[i];
+        }
+
+        if (sumAllElements % 2 == 0) {
+            sumLeftElements = sumAllElements;
+            for (int i = array.length - 1; i > 0; i--) {
+                sumLeftElements -= array[i];
+                sumRightElements += array[i];
+                if (sumLeftElements == sumRightElements) {
+                    isFind = true;
+                }
+            }
+        }
+
+        if (isFind) {
+            System.out.println("Точка найдена!");
+        } else {
+            System.out.println("Точка не найдена.");
+        }
+
+        /*boolean isFind = false;
 
         for (int i = 0; i < array.length; i++) {
             int sumLeftElements = 0;
@@ -113,7 +139,7 @@ public class MainHomework2 {
             System.out.println("Точка найдена!");
         } else {
             System.out.println("Точка не найдена.");
-        }
+        }*/
     }
 
     public static void checkIncrease(int[] array) {
