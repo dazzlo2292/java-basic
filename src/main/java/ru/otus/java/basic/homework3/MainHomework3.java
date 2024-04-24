@@ -6,7 +6,7 @@ public class MainHomework3 {
     public static void main(String[] args) {
 //        System.out.println( sumOfPositiveElements(new int[][] {{1, 1, 2, 3, 5}, {8, 13, 21, -34}}) );
 //        printSquareOfStars(7);
-//        replaceDiagonalElements(new int[][] {{1,1,2},{3,5,8},{13,21,34}});
+        replaceDiagonalElements(new int[][] {{1,1,2},{3,5,8},{13,21,34}});
 //        System.out.println( findMax(new int[][] {{1, 1, 2, 3, 5}, {8, 13, 21, -34}}) );
 //        System.out.println( sumRow(new int[][] {{1,1,2},{3,5,8},{13,21,34}},2) );
     }
@@ -42,12 +42,17 @@ public class MainHomework3 {
         }
 
         for (int i = 0; i < array.length; i++) {
+            array[i][i] = 0;
+            array[(array.length - 1) - i][i] = 0;
+        }
+
+/*        for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 if (i == j || i + j == array.length - 1) {
                     array[i][j] = 0;
                 }
             }
-        }
+        }*/
 
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
@@ -74,12 +79,12 @@ public class MainHomework3 {
         int rowNumber = row - 1;
         if (array.length <= rowNumber) {
             return -1;
-        } else {
-            int sum = 0;
-            for (int j = 0; j < array[rowNumber].length; j++) {
-                sum += array[rowNumber][j];
-            }
-            return sum;
         }
+
+        int sum = 0;
+        for (int j = 0; j < array[rowNumber].length; j++) {
+            sum += array[rowNumber][j];
+        }
+        return sum;
     }
 }
