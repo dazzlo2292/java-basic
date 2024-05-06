@@ -1,17 +1,16 @@
 package ru.otus.java.basic.homeworks.homework4;
 
 public class Box {
-    final private int size;
+    private final int size;
     private String color;
     private boolean isOpen;
-    private boolean isEmpty;
     private String item;
 
     public Box(int size, String color) {
         this.size = size;
         this.color = color;
         this.isOpen = false;
-        this.isEmpty = true;
+        this.item = null;
     }
 
     public String getColor() {
@@ -46,14 +45,10 @@ public class Box {
         return isOpen;
     }
 
-    public boolean isEmpty() {
-        return isEmpty;
-    }
-
     public void putItem(String item) {
-        if (isEmpty && isOpen) {
+        if ((this.item == null) && isOpen) {
             this.item = item;
-            isEmpty = false;
+//            isEmpty = false;
             System.out.println("Put " + item + " in the box\n");
         } else {
             System.out.println("Box is not empty or closed!\n");
@@ -61,10 +56,9 @@ public class Box {
     }
 
     public String getItem() {
-        if (!isEmpty && isOpen) {
+        if ((this.item != null) && isOpen) {
             String tempItem = item;
             item = null;
-            isEmpty = true;
             return tempItem;
         } else {
             System.out.println("Box is empty or closed!\n");
@@ -77,7 +71,6 @@ public class Box {
         System.out.println("Color: " + color);
         System.out.println("Is open: " + isOpen);
         System.out.println("Item: " + item);
-        System.out.println("Is empty: " + isEmpty);
         System.out.println();
     }
 }
