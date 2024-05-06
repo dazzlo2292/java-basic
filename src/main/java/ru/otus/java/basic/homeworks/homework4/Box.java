@@ -48,7 +48,6 @@ public class Box {
     public void putItem(String item) {
         if ((this.item == null) && isOpen) {
             this.item = item;
-//            isEmpty = false;
             System.out.println("Put " + item + " in the box\n");
         } else {
             System.out.println("Box is not empty or closed!\n");
