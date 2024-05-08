@@ -1,11 +1,11 @@
-package ru.otus.java.basic.homeworks.homework5;
+package ru.otus.java.basic.homeworks.homework5.animals;
 
 public abstract class Animal {
     String name;
     float runSpeed;
     float swimSpeed;
     float stamina;
-    boolean isTired = false;
+    boolean isTired;
 
     public Animal(String name, int runSpeed, int swimSpeed, int stamina) {
         this.name = name;
@@ -15,6 +15,11 @@ public abstract class Animal {
     }
 
     public float run(int distance) {
+        if (isTired) {
+            System.out.println(name + " is tired.");
+            return -1;
+        }
+
         System.out.println(name + " started to run...");
         if (distance <= stamina) {
             stamina -= distance;
@@ -37,6 +42,25 @@ public abstract class Animal {
         );
     }
 
+    public void increaseStamina(int stamina) {
+        if (stamina > 0) {
+            this.stamina += stamina;
+        }
+        if (this.stamina > 0 && isTired) {
+            this.isTired = false;
+        }
+    }
+
+    public void decreaseStamina(int stamina) {
+        if (stamina > 0) {
+            this.stamina -= stamina;
+        }
+        if (this.stamina <= 0) {
+            this.stamina = 0;
+            isTired = true;
+        }
+    }
+
     public String getName() { return name; }
 
     public void setName(String name) { this.name = name; }
@@ -51,14 +75,7 @@ public abstract class Animal {
 
     public float getStamina() { return stamina; }
 
-    public void setStamina(int stamina) {
-        if (stamina >= 0) {
-            this.stamina = stamina;
-        }
-        if (this.stamina > 0 && isTired) {
-            this.isTired = false;
-        }
-    }
+    public void setStamina(int stamina) { this.stamina = stamina; }
 
     public boolean isTired() { return isTired; }
 

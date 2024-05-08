@@ -1,4 +1,4 @@
-package ru.otus.java.basic.homeworks.homework5;
+package ru.otus.java.basic.homeworks.homework5.animals;
 
 public class Horse extends Animal {
     public Horse(String name, int runSpeed, int swimSpeed, int stamina) {
@@ -7,6 +7,11 @@ public class Horse extends Animal {
 
     @Override
     public float swim(int distance) {
+        if (isTired) {
+            System.out.println(name + " is tired.");
+            return -1;
+        }
+
         float staminaCosts = distance * 4;
         System.out.println(name + " started to swim...");
         if (staminaCosts <= stamina) {
