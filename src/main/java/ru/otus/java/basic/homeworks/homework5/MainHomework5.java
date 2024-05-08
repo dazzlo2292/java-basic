@@ -23,5 +23,6 @@ public class MainHomework5 {
         cat.info();
         dog.info();
         horse.info();
+
     }
 }
