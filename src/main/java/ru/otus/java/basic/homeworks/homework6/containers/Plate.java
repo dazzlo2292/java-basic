@@ -23,7 +23,7 @@ public class Plate {
         }
 
         if (currentFoodAmount + amount > maxFoodAmount) {
-            int addedFood = amount - (currentFoodAmount - maxFoodAmount);
+            int addedFood = maxFoodAmount - currentFoodAmount;
             currentFoodAmount = maxFoodAmount;
             return addedFood;
         }
