@@ -1,8 +1,8 @@
 package ru.otus.java.basic.homeworks.homework6.containers;
 
 public class Plate {
-    int maxFoodAmount;
-    int currentFoodAmount;
+    private int maxFoodAmount;
+    private int currentFoodAmount;
 
     public Plate(int maxFoodAmount) {
         this.maxFoodAmount = maxFoodAmount;
@@ -17,22 +17,26 @@ public class Plate {
         return currentFoodAmount;
     }
 
-    public void addFood(int amount) {
-        if (amount <= 0 ) return;
+    public int addFood(int amount) {
+        if (amount <= 0 ) {
+            return 0;
+        }
 
         if (currentFoodAmount + amount > maxFoodAmount) {
+            int addedFood = amount - (currentFoodAmount - maxFoodAmount);
             currentFoodAmount = maxFoodAmount;
-        } else {
-            currentFoodAmount += amount;
+            return addedFood;
         }
+        currentFoodAmount += amount;
+        return amount;
     }
 
     public boolean takeFood(int amount) {
-        if (amount < 0 && currentFoodAmount - amount >= 0) {
-            currentFoodAmount -= (amount * (-1));
-            return true;
+        if (amount <= 0) {
+            return false;
         }
-        if (amount >= 0 && currentFoodAmount - amount >= 0) {
+
+        if (currentFoodAmount - amount >= 0) {
             currentFoodAmount -= amount;
             return true;
         }

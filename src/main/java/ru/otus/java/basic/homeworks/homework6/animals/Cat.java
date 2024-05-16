@@ -3,9 +3,9 @@ package ru.otus.java.basic.homeworks.homework6.animals;
 import ru.otus.java.basic.homeworks.homework6.containers.Plate;
 
 public class Cat {
-    String name;
-    int appetite;
-    boolean hungry;
+    private String name;
+    private int appetite;
+    private boolean hungry;
 
     public String getName() {
         return name;
@@ -22,6 +22,15 @@ public class Cat {
     }
 
     public void eat(Plate plate) {
+        if (plate == null) {
+            return;
+        }
+
+        if (!this.hungry) {
+            System.out.println(name + " is not hungry.");
+            return;
+        }
+
         if (plate.takeFood(appetite)) {
             this.hungry = false;
             System.out.println(name + " has eaten!");
