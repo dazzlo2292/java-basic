@@ -9,10 +9,7 @@ public class Horse extends Transport implements Relocate {
 
     @Override
     public boolean checkArea(Area area) {
-        if (area == Area.SWAMP) {
-            return false;
-        }
-        return true;
+        return area == Area.FIELD || area == Area.WOOD;
     }
 
     @Override
@@ -20,12 +17,12 @@ public class Horse extends Transport implements Relocate {
         if (person == null) {
             return false;
         }
-        if (this.checkArea(area) && resource >= distance) {
-            System.out.printf("%s rode a horse %d km in %s!\n", person.getName(), distance, area);
-            resource -= distance;
+        if (this.checkArea(area) && getResource() >= distance) {
+            System.out.printf("%s rode a horse %d km in %s!%n", person.getName(), distance, area);
+            setResource(getResource() - distance);
             return true;
         }
-        if (resource < distance) {
+        if (getResource() < distance) {
             System.out.println("The horse is tired!");
             return false;
         }

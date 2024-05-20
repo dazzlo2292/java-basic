@@ -9,7 +9,7 @@ public class Tank extends Transport implements Relocate {
 
     @Override
     public boolean checkArea(Area area) {
-        return true;
+        return area == Area.FIELD || area == Area.WOOD || area == Area.SWAMP;
     }
 
     @Override
@@ -17,9 +17,9 @@ public class Tank extends Transport implements Relocate {
         if (person == null) {
             return false;
         }
-        if (resource >= distance) {
-            System.out.printf("%s drove in a tank %d km in %s!\n", person.getName(), distance, area);
-            resource -= distance;
+        if (getResource() >= distance) {
+            System.out.printf("%s drove in a tank %d km in %s!%n", person.getName(), distance, area);
+            setResource(getResource() - distance);
             return true;
         }
         System.out.println("There is not fuel...");

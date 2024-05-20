@@ -32,11 +32,11 @@ public class Person{
     public boolean move(int distance, Area area) {
         if (currentTransport == null) {
             if (stamina >= distance) {
-                System.out.printf("%s is on foot %d km in %s.\n", name, distance, area);
+                System.out.printf("%s is on foot %d km in %s.%n", name, distance, area);
                 stamina -= distance;
                 return true;
             }
-            System.out.printf("%s is tired!\n", name);
+            System.out.printf("%s is tired!%n", name);
             return false;
         }
         return currentTransport.move(this,distance,area);
