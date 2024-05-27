@@ -8,7 +8,7 @@ public class MainHomework9 {
         List<Integer> list = ListOperations.createIncrementList(-5,10);
         System.out.println(list);
 
-        System.out.println(ListOperations.sumElementsMoreThan5(list));
+        System.out.println(ListOperations.sumElementsMoreThanFive(list));
 
         ListOperations.replaceAllElements(0, list);
         System.out.println(list);

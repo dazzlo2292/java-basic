@@ -12,7 +12,7 @@ public class ListOperations {
         return list;
     }
 
-    public static int sumElementsMoreThan5(List<Integer> list) {
+    public static int sumElementsMoreThanFive(List<Integer> list) {
         if (list == null) {
             return 0;
         }
