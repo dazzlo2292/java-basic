@@ -12,17 +12,17 @@ public class PhoneBook {
         map = new HashMap<>();
     }
 
-    public void add(String name, String address) {
-        if (name == null && address == null) {
+    public void add(String name, String phone) {
+        if (name == null && phone == null) {
             return;
         }
 
         if (map.containsKey(name)) {
-            map.get(name).add(address);
+            map.get(name).add(phone);
         } else {
-            Set<String> addresses = new HashSet<>();
-            addresses.add(address);
-            map.put(name, addresses);
+            Set<String> phones = new HashSet<>();
+            phones.add(phone);
+            map.put(name, phones);
         }
     }
 
@@ -30,9 +30,9 @@ public class PhoneBook {
         return map.get(name);
     }
 
-    public boolean containsPhoneNumber(String address) {
+    public boolean containsPhoneNumber(String phone) {
         for (Set<String> element : map.values()) {
-            if (element.contains(address)) {
+            if (element.contains(phone)) {
                 return true;
             }
         }
