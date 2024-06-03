@@ -12,11 +12,17 @@ public class MainHomework11 {
     public static void main(String[] args) {
 
 
-        /*List<Integer> list = new ArrayList<>(Arrays.asList(10,5,17,3,19,7,12,1));
-        BinarySearchTree tree = new BinarySearchTree(list);
 
+        /*** HARD - Binary tree ***/
+        List<Integer> list = new ArrayList<>(Arrays.asList(10,5,17,3,19,7,12,1));
+        BinarySearchTree tree = new BinarySearchTree(list);
+        tree.doInsert(-1);
+        tree.doInsert(22);
+        tree.doInsert(11);
+        tree.doInsert(9);
         BinaryTreePrinter.printTree(tree);
-        System.out.println(tree.getSortedList(list));
-        System.out.println(tree.doFind(3));*/
+
+        tree = tree.balance();
+        BinaryTreePrinter.printTree(tree);
     }
 }

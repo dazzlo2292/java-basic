@@ -1,44 +1,30 @@
 package ru.otus.java.basic.homeworks.homework11.binarytree;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Stack;
 
 public class BinarySearchTree implements SearchTree<Integer> {
     private TreeNode root;
+    private final Stack<TreeNode> tempStack = new Stack<>();
 
     public BinarySearchTree(List<Integer> initList) {
         List<Integer> list = this.getSortedList(initList);
-        this.root = fillTree(list,  null);
-
-//        for (Integer element : list) {
-//            this.doInsert(element);
-//        }
+        this.root = fillTree(list);
     }
 
-    public TreeNode fillTree(List<Integer> list, TreeNode parentNode) {
+    public TreeNode fillTree(List<Integer> list) {
         if (!list.isEmpty()) {
             int indexOfCenter = list.size() / 2;
             TreeNode newNode = new TreeNode(list.get(indexOfCenter));
             List<Integer> leftList = list.subList(0, (list.size() / 2));
             List<Integer> rightList = list.subList((list.size() / 2) + 1, list.size());
-
-            if (parentNode == null) {
-                parentNode = newNode;
-            }
-
-            TreeNode leftNode = this.fillTree(leftList, newNode);
-//            TreeNode rightNode = this.fillTree(rightList, newNode);
-
-            if (!parentNode.equals(leftNode)) {
-                parentNode.setLeftChild(leftNode);
-            }
-
-//            if (!parentNode.equals(rightNode)) {
-//                parentNode.setRightChild(rightNode);
-//            }
+            newNode.setLeftChild(fillTree(leftList));
+            newNode.setRightChild(fillTree(rightList));
+            return newNode;
         }
-
-       return parentNode;
+       return null;
     }
 
     public TreeNode getRoot() {
@@ -117,5 +103,22 @@ public class BinarySearchTree implements SearchTree<Integer> {
             }
         } while (needSort);
         return list;
+    }
+
+    public BinarySearchTree balance() {
+        List<Integer> rebalanceList = new ArrayList<>();
+        toStack(root);
+        for (TreeNode element : tempStack) {
+            rebalanceList.add(element.getValue());
+        }
+        return new BinarySearchTree(rebalanceList);
+    }
+
+    private void toStack(TreeNode root) {
+        if (root != null) {
+            tempStack.push(root);
+            toStack(root.getLeftChild());
+            toStack(root.getRightChild());
+        }
     }
 }
