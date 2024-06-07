@@ -1,0 +1,3 @@
+It is Homework №12.
+Theme — Package java.io
+Here is the user's new text:
