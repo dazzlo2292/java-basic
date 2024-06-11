@@ -7,19 +7,16 @@ public class SortArray {
             return;
         }
 
-        boolean needSort;
         int temp;
-        do {
-            needSort = false;
-            for (int i = 0; i < array.length - 1; i++) {
-                if (array[i] > array[i + 1]) {
-                    temp = array[i];
-                    array[i] = array[i + 1];
-                    array[i + 1] = temp;
-                    needSort = true;
+        for (int i = array.length - 1; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (array[j] > array[i]) {
+                    temp = array[j];
+                    array[j] = array[i];
+                    array[i] = temp;
                 }
             }
-        } while (needSort);
+        }
     }
 
     public static void quickSort(int[] array, int left, int right) {

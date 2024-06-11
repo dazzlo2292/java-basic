@@ -11,7 +11,6 @@ import java.util.List;
 public class MainHomework11 {
     public static void main(String[] args) {
         int[] array = new int[] {0,13,8,5,3,2,1,1,21};
-        //SortArray.bubbleSort(array);
         SortArray.quickSort(array, 0, array.length - 1);
         for (int element : array) {
             System.out.print(element + " ");
@@ -41,5 +40,6 @@ public class MainHomework11 {
 
         tree = tree.balance();
         BinaryTreePrinter.printTree(tree);
+
     }
 }

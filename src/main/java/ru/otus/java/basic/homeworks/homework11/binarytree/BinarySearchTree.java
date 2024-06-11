@@ -1,13 +1,10 @@
 package ru.otus.java.basic.homeworks.homework11.binarytree;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Stack;
+import java.util.*;
 
 public class BinarySearchTree implements SearchTree<Integer> {
     private TreeNode root;
-    private final Stack<TreeNode> tempStack = new Stack<>();
+    public final LinkedList<TreeNode> tempStack = new LinkedList<>();
 
     public BinarySearchTree(List<Integer> initList) {
         List<Integer> list = this.getSortedList(initList);
@@ -108,15 +105,15 @@ public class BinarySearchTree implements SearchTree<Integer> {
     public BinarySearchTree balance() {
         List<Integer> rebalanceList = new ArrayList<>();
         toStack(root);
-        for (TreeNode element : tempStack) {
-            rebalanceList.add(element.getValue());
+        while (!tempStack.isEmpty()) {
+            rebalanceList.add(tempStack.poll().getValue());
         }
         return new BinarySearchTree(rebalanceList);
     }
 
     private void toStack(TreeNode root) {
         if (root != null) {
-            tempStack.push(root);
+            tempStack.add(0,root);
             toStack(root.getLeftChild());
             toStack(root.getRightChild());
         }
