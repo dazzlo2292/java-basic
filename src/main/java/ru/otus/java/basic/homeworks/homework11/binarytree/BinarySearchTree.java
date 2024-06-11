@@ -113,7 +113,7 @@ public class BinarySearchTree implements SearchTree<Integer> {
 
     private void toStack(TreeNode root) {
         if (root != null) {
-            tempStack.add(0,root);
+            tempStack.addFirst(root);
             toStack(root.getLeftChild());
             toStack(root.getRightChild());
         }
