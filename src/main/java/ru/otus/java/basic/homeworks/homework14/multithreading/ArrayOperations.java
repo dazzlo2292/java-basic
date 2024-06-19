@@ -4,14 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArrayOperations {
-    public static double[] create(int size) throws InterruptedException {
-        double[] array = new double[size];
+    public static double[] create(int size) throws InterruptedException, AppArraySizeException {
         final int THREADS_COUNT = 4;
+
+        if ((size % THREADS_COUNT) != 0) {
+            throw new AppArraySizeException(size, THREADS_COUNT);
+        }
+
+        double[] array = new double[size];
         List<ThreadFillArray> threads = new ArrayList<>();
 
-        if ((array.length % THREADS_COUNT) != 0) {
-            return null;
-        }
         int step = array.length / THREADS_COUNT;
 
         int currentIndexFrom = 0;

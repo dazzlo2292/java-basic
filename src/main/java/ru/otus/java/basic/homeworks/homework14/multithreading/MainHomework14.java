@@ -8,11 +8,10 @@ public class MainHomework14 {
 
         try {
             ArrayOperations.create(SIZE);
-        } catch (InterruptedException e) {
+            long stopTime = System.currentTimeMillis();
+            System.out.println("Filling with multithreading = " + (stopTime - startTime));
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
-        long stopTime = System.currentTimeMillis();
-        System.out.println("Filling with multithreading = " + (stopTime - startTime));
     }
 }
