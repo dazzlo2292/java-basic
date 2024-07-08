@@ -1,5 +1,9 @@
 package ru.otus.java.basic.homeworks.homework19.generics;
 
+import ru.otus.java.basic.homeworks.homework19.generics.fruits.Apple;
+import ru.otus.java.basic.homeworks.homework19.generics.fruits.Fruit;
+import ru.otus.java.basic.homeworks.homework19.generics.fruits.Orange;
+
 public class MainHomework19 {
     public static void main(String[] args) {
         Box<Orange> oranges = new Box<>(1.0f);

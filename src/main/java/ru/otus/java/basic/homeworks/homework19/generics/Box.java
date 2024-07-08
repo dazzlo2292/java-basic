@@ -1,5 +1,7 @@
 package ru.otus.java.basic.homeworks.homework19.generics;
 
+import ru.otus.java.basic.homeworks.homework19.generics.fruits.Fruit;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,13 +24,14 @@ public class Box<T extends Fruit> {
         return maxWeight;
     }
 
-    public void addFruit(T fruit) {
+    public boolean addFruit(T fruit) {
         if (maxWeight - currentWeight < fruit.getWeight()) {
             System.out.println("The box is full");
-            return;
+            return false;
         }
         fruits.add(fruit);
         currentWeight += fruit.getWeight();
+        return true;
     }
 
     public boolean compare(Box<?> box) {
