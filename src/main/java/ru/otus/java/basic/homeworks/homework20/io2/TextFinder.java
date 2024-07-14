@@ -11,16 +11,18 @@ public class TextFinder {
     private static final String ROOT_PATH = "./src/main/resources/files-hm20";
 
     public static void start() {
-        Scanner scanner = new Scanner(System.in);
+        try(Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Enter name of file:");
+            String selectedFile = scanner.nextLine();
+            String path = Paths.get(ROOT_PATH, selectedFile).toString();
 
-        System.out.println("Enter name of file:");
-        String selectedFile = scanner.nextLine();
-        String path = Paths.get(ROOT_PATH, selectedFile).toString();
+            System.out.println("Enter text:");
+            String text = scanner.nextLine();
 
-        System.out.println("Enter text:");
-        String text = scanner.nextLine();
-
-        System.out.println(findText(path, text));
+            System.out.println(findText(path, text));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private static int findText(String path, String text) {
