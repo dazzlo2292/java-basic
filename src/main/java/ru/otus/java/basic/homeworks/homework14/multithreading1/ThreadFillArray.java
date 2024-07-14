@@ -1,4 +1,4 @@
-package ru.otus.java.basic.homeworks.homework14.multithreading;
+package ru.otus.java.basic.homeworks.homework14.multithreading1;
 
 public class ThreadFillArray extends Thread{
     private final double[] array;
