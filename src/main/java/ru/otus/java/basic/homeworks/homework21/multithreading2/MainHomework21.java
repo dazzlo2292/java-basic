@@ -9,15 +9,15 @@ public class MainHomework21 {
         Printer printer = new Printer();
 
         executorService.execute(() -> {
-            printer.printA();
+            printer.printChar('A','C');
         });
 
         executorService.execute(() -> {
-            printer.printB();
+            printer.printChar('B','A');
         });
 
         executorService.execute(() -> {
-            printer.printC();
+            printer.printChar('C','B');
         });
 
         executorService.shutdown();
