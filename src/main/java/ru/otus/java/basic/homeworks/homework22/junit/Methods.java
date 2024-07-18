@@ -27,13 +27,11 @@ public class Methods {
         for (int element : array) {
             if (element == 1) {
                 existsOne = true;
-                continue;
-            }
-            if (element == 2) {
+            } else if (element == 2) {
                 existsTwo = true;
-                continue;
+            } else {
+                return false;
             }
-            return false;
         }
         return existsOne && existsTwo;
     }
